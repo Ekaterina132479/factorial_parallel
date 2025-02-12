@@ -3,17 +3,17 @@
 #include <vector>
 #include <mutex>
 
-int shared_counter = 0;  // счётчик
-std::mutex mtx;          // мьютекс
+int shared_counter = 0;  // Г±Г·ВёГІГ·ГЁГЄ
+std::mutex mtx;          // Г¬ГјГѕГІГҐГЄГ±
 
-// функция с гонками данных
+// ГґГіГ­ГЄГ¶ГЁГї Г± ГЈГ®Г­ГЄГ Г¬ГЁ Г¤Г Г­Г­Г»Гµ
 void increment_unsafe(int thread_id) {
     for (int i = 0; i < 1000; ++i) {
         ++shared_counter; 
     }
 }
 
-// функция с синхронизацией
+// ГґГіГ­ГЄГ¶ГЁГї Г± Г±ГЁГ­ГµГ°Г®Г­ГЁГ§Г Г¶ГЁГҐГ©
 void increment_safe(int thread_id) {
     for (int i = 0; i < 1000; ++i) {
         std::lock_guard<std::mutex> lock(mtx); 
@@ -21,7 +21,7 @@ void increment_safe(int thread_id) {
     }
 }
 
-// запуск потоков
+// Г§Г ГЇГіГ±ГЄ ГЇГ®ГІГ®ГЄГ®Гў
 void run_threads(void (*func)(int), const std::string& description) {
     shared_counter = 0;  
     const int num_threads = 5;
