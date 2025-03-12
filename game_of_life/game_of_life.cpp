@@ -2,18 +2,18 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-#include <unistd.h>  // Для usleep (анимация в терминале)
+#include <unistd.h>  
 #include <omp.h>
 
 using namespace std;
 
-const int SIZE = 100;  // Размер игрового поля (уменьшен для читаемости)
+const int SIZE = 100;  // Размер игрового поля 
 const double LIVE_PROBABILITY = 0.2; // Вероятность появления живой клетки
 const char ALIVE = '0', DEAD = '.'; // Символы для визуализации
 
 // Функция для очистки экрана
 void clear_screen() {
-    cout << "\033[H\033[J"; // ANSI-код для очистки экрана
+    cout << "\033[H\033[J"; 
 }
 
 // Функция для инициализации поля
@@ -70,7 +70,7 @@ void print_grid(const vector<vector<char>>& grid, int iteration) {
         }
         cout << endl;
     }
-    usleep(100000); // Задержка 100 мс (анимация)
+    usleep(100000); // Задержка 100 мс
 }
 
 int main() {
@@ -80,7 +80,7 @@ int main() {
     initialize(grid);
     int iteration = 0;
 
-    while (true) {  // Бесконечный цикл, можно прервать Ctrl + C
+    while (true) {  // Бесконечный цикл
         print_grid(grid, iteration);
         update_grid(grid, next_grid);
         grid.swap(next_grid); // Меняем местами текущий и следующий кадр
