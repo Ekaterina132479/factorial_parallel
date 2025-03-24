@@ -1,7 +1,7 @@
 ﻿#include <opencv2/opencv.hpp>
 #include <omp.h>
 #include <iostream>
-#include <chrono>  // Для замера времени
+#include <chrono>  
 
 using namespace cv;
 using namespace std;
